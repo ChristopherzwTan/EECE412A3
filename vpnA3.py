@@ -3,16 +3,18 @@
 #
 # EECE 412 Assignment 3 VPN
 # 
-# 
-# 
-# 
 # Last Updated: October 5, 2014
 # 
 
-import gtk, sys
+import gtk, sys, socket
 
 #class VPN(gtk.Window):
 class VPN(object):
+
+    def send_clicked(self, widget, plaintext, ip, port):
+	print "Send button has been pressed! The plaintext now is: " + plaintext.get_text() + "\n"
+	print "IP address is: " + ip.get_text() + " The port is:" + port.get_text() + "\n"
+
     def __init__(self):
         super(VPN, self).__init__()
 	
@@ -110,18 +112,15 @@ class VPN(object):
         self.received_plain_textview.show()
 
 
-	
-
 	# Buttons
 	send_button = gtk.Button("Send")
 	vbox.pack_start(send_button, gtk.TRUE, gtk.TRUE, 0)
+	send_button.connect("clicked", self.send_clicked, self.plaintext_entry, ip_entry, port_entry) 
 	
 	server_start = gtk.Button("Server Start")
 	vbox.pack_start(server_start, gtk.TRUE, gtk.TRUE, 0)
 
 	
-
-
 	self.window.show_all()
 		
 
