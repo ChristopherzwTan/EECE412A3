@@ -24,21 +24,24 @@ class PyApp(gtk.Window):
         serverMode = gtk.Button("Server Mode")
         close = gtk.Button(stock=gtk.STOCK_CLOSE)
         #btn4 = gtk.Button("Button")
-        #btn4.set_size_request(80, 40)
 
 	vbox = gtk.VBox(False, 5)
-        hbox = gtk.HBox(False, 3)
+        hbox = gtk.HBox(True, 3)
         
-	hbox.add(clientMode)
+        valign = gtk.Alignment(0, 1, 0, 0)
+        vbox.pack_start(valign)
+        
+        hbox.add(clientMode)
 	hbox.add(serverMode)
+        hbox.add(close)
+        
+        halign = gtk.Alignment(1, 0, 0, 0)
+        halign.add(hbox)
+        
+        vbox.pack_start(halign, False, False, 3)
 
-	hboxLeft = gtk.HBox(False,0)
-	hboxRight = gtk.HBox(False,0)
-	#vbox.pack_start(halign, False, False, 3)
+        self.add(vbox)
 
-	vbox.add(hboxLeft)
-	#self.add(hbox)
-	#self.add(vbox)
         self.connect("destroy", gtk.main_quit)
 
         self.show_all()
