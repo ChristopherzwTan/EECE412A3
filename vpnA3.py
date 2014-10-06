@@ -68,7 +68,7 @@ class VPN(object):
 	self.plaintext_entry = gtk.Entry(50)
         vbox.pack_start(self.plaintext_entry, gtk.TRUE, gtk.TRUE, 0)
 
-	ciphertext = gtk.Label("Plain Text")
+	ciphertext = gtk.Label("Cipher Text")
         vbox.pack_start(ciphertext, gtk.TRUE, gtk.TRUE, 0)
 
 	self.ciphertext_entry = gtk.Entry(50)
